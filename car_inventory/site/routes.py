@@ -15,14 +15,30 @@ which Flask uses to locate the Blueprint's resource
 def home():
     return render_template('index.html')
 
+@site.route('/profile')
+def profile():
+    return render_template('profile.html')
+
+#--------Extra routes below----------
+
 @site.route('/about')
 def about():
     return 'The About Page - COMMING SOON!!'
 
 @site.route('/blog')
 def blog():
-    return 'Here is the future Blog page!'
+    return '<h1> Here is the future Blog page! <h1>'
 
 @site.route('/blog/<string:blog_id>')
 def blogpost(blog_id):
     return 'This is blog post number: ' + blog_id
+
+#--------Some funky user names below----------
+@site.route('/user/<string:user_name>')
+def user_name(user_name):
+    return render_template('user.html', user_name=user_name)
+
+@site.route('/allusers')  # path on the web browser
+def all_users():
+    all_users = ['kevin', 'alex', 'bob', 'atila']
+    return render_template('all_users.html', all_users=all_users) # path in working files
