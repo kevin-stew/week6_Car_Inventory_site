@@ -25,6 +25,7 @@ def create_car(current_user_token):
     weight = request.json['weight']
     cost_of_production = request.json['cost_of_production']
     make = request.json['make']
+    
     user_token = current_user_token.token
 
     car = Car(name, description,price,safety_quality,drive_time,max_speed,dimensions,
@@ -58,7 +59,6 @@ def get_car(current_user_token,id):
 @token_required
 def update_car(current_user_token, id):
     car = Car.query.get(id)
-
     car.name = request.json['name']
     car.description = request.json['description']
     car.price = request.json['price']

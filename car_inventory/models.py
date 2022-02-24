@@ -29,8 +29,6 @@ class User(db.Model, UserMixin):
     date_created = db.Column(db.DateTime, nullable = False, default = datetime.utcnow)
     car = db.relationship('Car', backref = "owner", lazy = True)
 
-
-
     def __init__(self, email, first_name = '', last_name = '', id='', password='', token='',g_auth_verify=False):
         self.id = self.set_id()
         self.first_name = first_name
@@ -54,9 +52,10 @@ class User(db.Model, UserMixin):
     def __repr__(self):
         return f'User {self.email_name} has been added to the database.'
 
-
+#create pstgresSQL table  columns here
 class Car(db.Model):
     id = db.Column(db.String(50), primary_key = True)
+    name = db.Column(db.String(50), nullable = True)
     description = db.Column(db.String(200), nullable = True)
     price = db.Column(db.Numeric(precision=10, scale=2))
     safety_quality = db.Column(db.String(50), nullable = True)
