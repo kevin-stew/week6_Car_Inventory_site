@@ -11,7 +11,7 @@ def getdata(current_user_token):
     return jsonify({'some':'value',
                     'Other':44.3})
 
-# Create Car Route
+# CREATE Car Route
 @api.route('/cars', methods=['POST'])
 @token_required
 def create_car(current_user_token):
@@ -84,3 +84,13 @@ def delete_car(current_user_token, id):
 
     response = car_schema.dump(car)
     return jsonify(response)
+
+# @api.route('/inventory', methods=['POST'])
+@api.route('/inventory', methods=['POST'])
+def post_random_things():
+    test_dict = {
+        'tim': 'hammer',
+        'john': 'toothbrush',
+        'sussie': 'foil',
+    }
+    return test_dict

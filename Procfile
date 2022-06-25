@@ -1,1 +1,1 @@
-web: gunicorn drone_inventory:app --preload
+web: gunicorn car_inventory:app --preload
